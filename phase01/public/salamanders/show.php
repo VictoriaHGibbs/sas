@@ -1,20 +1,17 @@
-<?php require_once('../../private/initialize.php'); 
+<?php require_once('../../private/initialize.php'); ?>
 
-// fancy if...else
-
-
+<!-- // fancy if...else
 // if the id is not empty assign it the value from $_GET['id']
 // else $id = 1
-// or use the non-coalesing operator
+// or use the non-coalesing operator -->
+<?php $id = $_GET['id'] ?? '1'; ?>
 
-$pageTitle = 'Salamander Details';
-
-// include the shared path to the header
-
-?>
+<?php $pageTitle = 'Salamander Details'; ?>
+<?php include(SHARED_PATH . '/salamander-header.php'); ?>
 
 <h2>Salamander Details</h2>
-<!-- <p> Page ID: Use the h() function and pass in the id/p> -->
-<p><a href="<?= url_for('/salamanders/index.php'); ?>">&laquo; Back to Salamander List</a></p>
+<p> Page ID: <?php echo h($id); ?> </p>
+<p><a href="<?= urlFor('/salamanders/index.php'); ?>">&laquo; Back to Salamander List</a></p>
 
-<!-- Use the shared path to the salamander footer. -->
+
+<?php include(SHARED_PATH . '/salamander-footer.php'); ?>

@@ -10,16 +10,16 @@
   <head>
     <title>SAS - <?php echo h($pageTitle); ?></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/salamanders.css'); ?>" />
+    <link rel="stylesheet" media="all" href="<?php echo urlFor('/stylesheets/salamanders.css'); ?>" />
   </head>
 
   <body>
     <header>
-      <h1><a href="<?= url_for('/'); ?>">Southern Appalachian Salamanders (SAS)</a></h1>
+      <h1><a href="<?= urlFor('/'); ?>">Southern Appalachian Salamanders (SAS)</a></h1>
     </header>
     <navigation>
       <ul>
-      <li><a href="<?= url_for('salamanders/'); ?>">Salamanders</a></li>
+      <li><a href="<?= urlFor('salamanders/'); ?>">Salamanders</a></li>
       </ul>
     </navigation>
 
