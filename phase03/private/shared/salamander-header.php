@@ -1,7 +1,5 @@
 <?php
-  if(!isset($pageTitle)) { 
-    $pageTitle = 'Salamanders'; 
-  }
+  if(!isset($pageTitle)) { $pageTitle = 'Salamanders'; }
 ?>
 
 <!doctype html>

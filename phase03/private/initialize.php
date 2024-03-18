@@ -1,5 +1,5 @@
 <?php
-  ob_start();
+  ob_start(); //turn on output buffering
   // Assign file paths to PHP constants
   // __FILE__ returns the current path to this file
   // dirname() returns the path to the parent directory
@@ -21,8 +21,8 @@
   define("WWW_ROOT", $doc_root);
   
   require_once('functions.php');
-
-
+  require_once('database.php');
+  require_once('query_functions.php');
 
   $db = db_connect();
 
