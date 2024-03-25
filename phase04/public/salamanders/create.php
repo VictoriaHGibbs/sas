@@ -10,9 +10,11 @@ if(is_post_request()) {
   $salamander['habitat'] = $_POST['habitat'] ?? '';
   $salamander['description'] = $_POST['description'] ?? '';
 
-  // $result = insert_salamander($salamander);
+  $result = insert_salamander($salamander);
   $newID = mysqli_insert_id($db);
   redirect_to(urlFor('salamanders/show.php?id= ' . $newID ));
+} else {
+  redirect_to(urlFor('salamanders/new.php'));
 }
 ?>
 

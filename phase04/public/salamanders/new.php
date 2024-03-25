@@ -2,15 +2,6 @@
 
 require_once('../../private/initialize.php'); 
 
-$test = $_GET['test'] ?? '';
-
-if($test == '404') {
-  error_404();
-} elseif($test == '500') {
-  error_500();
-} elseif($test == 'redirect') {
-  redirect_to(urlFor('/salamanders/index.php'));
-}
 
 ?>
 
@@ -26,28 +17,20 @@ if($test == '404') {
     <h1>Create Salamander</h1>
 
     <form action="<?php echo urlFor('salamanders/create.php'); ?>" method="post">
-      <dl>
-        <dt>Name</dt>
-        <dd><input type="text" name="salamanderName" value="" /></dd>
-      </dl>
-      <dl>
-        <dt>Position</dt>
-        <dd>
-          <select name="position">
-            <option value="1">1</option>
-          </select>
-        </dd>
-      </dl>
-      <dl>
-        <dt>Visible</dt>
-        <dd>
-          <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" />
-        </dd>
-      </dl>
-      <div id="operations">
-        <input type="submit" value="Create Salamander" />
-      </div>
+      <label for="salamanderName">Salamander Name: </label>
+      <input type="text" name="salamanderName" id="salamanderName" value="">
+      <br>
+
+      <label for="habitat">Habitat: </label>
+      <textarea name="habitat" id="habitat" rows="4" cols="50" value=""></textarea>
+      <br>
+
+      <label for="description">Description: </label>
+      <textarea name="description" id="description" rows="4" cols="50" value=""></textarea>
+      <br>
+        
+      <input type="submit" value="Create Salamander">
+     
     </form>
 
   </div>

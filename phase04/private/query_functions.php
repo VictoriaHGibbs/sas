@@ -23,12 +23,12 @@ function insert_salamander($salamander) {
   global $db;
   $sql = "INSERT INTO salamander ";
   $sql .= "(salamanderName, habitat, description)";
-  $sql .= "VALUES(";
+  $sql .= "VALUES (";
   $sql .= "'" . $salamander['salamanderName'] . "', ";
   $sql .= "'" . $salamander['habitat'] . "', ";
   $sql .= "'" . $salamander['description'] . "'";
   $sql .= ")";
-  $result = mysqli_query($db, $sql);
+  $result = mysqli_query($db, $sql); // for insert statements, result is a true/false 
 
   if($result) {
     return true;
