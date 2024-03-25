@@ -39,6 +39,25 @@ function insert_salamander($salamander) {
   }
 }
 
+function update_salamander($salamander) {
+  global $db;
+    $sql = "UPDATE salamander SET ";
+    $sql .= "salamanderName='" .  $salamander['salamanderName'] . "', ";
+    $sql .= "habitat='" .  $salamander['habitat'] . "',";
+    $sql .= "description='" .  $salamander['description'] . "' ";
+    $sql .= "WHERE id='" . $salamander['id'] . "' ";
+    $sql .= "LIMIT 1";
+  
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit();
+    }
+}
+
 function delete_salamander($id) {
   global $db;
   $sql = "DELETE FROM salamander ";

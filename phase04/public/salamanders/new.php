@@ -21,11 +21,11 @@ require_once('../../private/initialize.php');
       <input type="text" name="salamanderName" id="salamanderName" value="">
       <br>
 
-      <label for="habitat">Habitat: </label>
+      <label for="habitat">Habitat: </label><br>
       <textarea name="habitat" id="habitat" rows="4" cols="50" value=""></textarea>
       <br>
 
-      <label for="description">Description: </label>
+      <label for="description">Description: </label><br>
       <textarea name="description" id="description" rows="4" cols="50" value=""></textarea>
       <br>
         

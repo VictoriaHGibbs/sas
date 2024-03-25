@@ -1,35 +1,32 @@
 <?php
 
-require_once('../../private/initialize.php'); 
+require_once('../../private/initialize.php');
+$page_title = 'Edit Salamander';
+include(SHARED_PATH . '/salamander-header.php');
 
 if(!isset($_GET['id'])) {
   redirect_to(urlFor('/salamanders/new.php'));
 }
 $id = $_GET['id'];
 
-$salamanderName = '';
-$position = '';
-$visible = '';
 
 if(is_post_request()) {
 
   // Handle form values sent by new.php
 
-  $salamanderName = $_POST['salamanderName'] ?? '';
-  $position = $_POST['position'] ?? '';
-  $visible = $_POST['visible'] ?? '';
+  $salamander = [];
+  $salamander['id'] = $id;
+  $salamander['salamanderName'] = $_POST['salamanderName'] ?? '';
+  $salamander['habitat'] = $_POST['habitat'] ?? '';
+  $salamander['description'] = $_POST['description'] ?? '';
 
-  echo "Form parameters<br />";
-  echo "Salamander name: " . $salamanderName . "<br />";
-  echo "Position: " . $position . "<br />";
-  echo "Visible: " . $visible . "<br />";
+  $result = update_salamander($salamander);
+  redirect_to(urlFor('salamanders/show.php?id=' . $id));
+} else {
+  $salamander = find_salamander_by_id($id);
 }
 
 ?>
-
-
-<?php $page_title = 'Edit Salamander'; ?>
-<?php include(SHARED_PATH . '/salamander-header.php'); ?>
 
 <div id="content">
 
@@ -39,28 +36,19 @@ if(is_post_request()) {
     <h1>Edit Salamander</h1>
 
     <form action="<?php echo urlFor('/salamanders/edit.php?id=' . h(u($id))); ?>" method="post">
-      <dl>
-        <dt>Name</dt>
-        <dd><input type="text" name="salamanderName" value="<?php echo $salamanderName; ?>" /></dd>
-      </dl>
-      <dl>
-        <dt>Position</dt>
-        <dd>
-          <select name="position">
-            <option value="1">1</option>
-          </select>
-        </dd>
-      </dl>
-      <dl>
-        <dt>Visible</dt>
-        <dd>
-          <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" />
-        </dd>
-      </dl>
-      <div id="operations">
-        <input type="submit" value="Edit Salamander" />
-      </div>
+      <label for="salamanderName">Salamander Name: </label>
+      <input type="text" name="salamanderName" id="salamanderName" value="<?php echo h($salamander['salamanderName']); ?>">
+      <br>
+
+      <label for="habitat">Habitat: </label><br>
+      <textarea name="habitat" id="habitat" rows="4" cols="50"><?php echo h($salamander['habitat']); ?></textarea>
+      <br>
+
+      <label for="description">Description: </label><br>
+      <textarea name="description" id="description" rows="4" cols="50"><?php echo h($salamander['description']); ?></textarea>
+      <br>
+        
+      <input type="submit" value="Edit Salamander">
     </form>
 
   </div>
