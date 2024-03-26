@@ -10,6 +10,6 @@ define("DB_USER", "user name");
 define("DB_PASS", "password");
 define("DB_NAME", "database name");
 
->
+?>
 ```
 You will also need to download the **salamanders.sql** file and run the code. 
