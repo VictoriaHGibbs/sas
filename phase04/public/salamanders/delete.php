@@ -24,8 +24,9 @@ $pageTitle = 'Delete Salamander'; ?>
       <p><?php echo h($salamander['salamanderName']); ?></p>
   
       <form action="<?php echo urlFor('salamanders/delete.php?id=' . h(u($salamander['id']))); ?>" method="post">
-          <input type="submit" name="commit" value="Delete Salamander">
+          <input type="submit" name="commit" value="Yes! Delete <?php echo h($salamander['salamanderName']); ?>, nobody wants them here anyway.">
       </form>
+      <p><a href="<?= urlFor('/salamanders/index.php'); ?>">NO! TAKE ME BACK! I CHANGED MY MIND! I LOVE <?php echo h($salamander['salamanderName']); ?> </a></p>
 
 
 
