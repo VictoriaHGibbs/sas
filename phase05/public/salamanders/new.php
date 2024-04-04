@@ -2,6 +2,27 @@
 
 require_once('../../private/initialize.php'); 
 
+if(is_post_request()) {
+
+  $salamander = [];
+  $salamander['salamanderName'] = $_POST['salamanderName'] ?? '';
+  $salamander['habitat'] = $_POST['habitat'] ?? '';
+  $salamander['description'] = $_POST['description'] ?? '';
+
+  $result = insert_salamander($salamander);
+  if($result === true) {
+    $newID = mysqli_insert_id($db);
+    redirect_to(urlFor('salamanders/show.php?id= ' . $newID ));
+  } else {
+    $errors = $result;
+  }
+
+} else {
+  $salamander = [];
+  $salamander["salamander_name"] = '';
+  $salamander["habitat"] = '';
+  $salamander["description"] = '';
+}
 
 ?>
 
@@ -16,7 +37,9 @@ require_once('../../private/initialize.php');
   <div class="salamander new">
     <h1>Create Salamander</h1>
 
-    <form action="<?php echo urlFor('salamanders/create.php'); ?>" method="post">
+    <?php echo display_errors($errors); ?>
+
+    <form action="<?php echo urlFor('salamanders/new.php'); ?>" method="post">
       <label for="salamanderName">Salamander Name: </label>
       <input type="text" name="salamanderName" id="salamanderName" value="">
       <br>

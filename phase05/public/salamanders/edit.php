@@ -10,10 +10,7 @@ if(!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-
 if(is_post_request()) {
-
-  // Handle form values sent by new.php
 
   $salamander = [];
   $salamander['id'] = $id;
@@ -28,7 +25,7 @@ if(is_post_request()) {
     $errors = $result;
     // var_dump($errors);
   }
-  redirect_to(urlFor('salamanders/show.php?id=' . $id));
+  
 } else {
   $salamander = find_salamander_by_id($id);
 }

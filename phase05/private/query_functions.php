@@ -23,16 +23,16 @@ function validate_salamander($salamander) {
   $errors = [];
   
   if(is_blank($salamander['salamanderName'])) {
-  $errors[] = "Name cannot be blank.";
+    $errors[] = "Name cannot be blank.";
   }
   if(!has_length($salamander['salamanderName'], ['min' => 2, 'max' => 255])) {
-  $errors[] = "Name must be between 2 and 255 characters.";
+    $errors[] = "Name must be between 2 and 255 characters.";
   }
   if(is_blank($salamander['description'])) {
-  $errors[] = "Description cannot be blank.";
+    $errors[] = "Description cannot be blank.";
   }
   if(is_blank($salamander['habitat'])) {
-  $errors[] = "Habitat cannot be blank.";
+    $errors[] = "Habitat cannot be blank.";
   }
   
   return $errors;
